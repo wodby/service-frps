@@ -1,0 +1,77 @@
+name: frps
+icon: frpc
+type: service
+title: FRP Server
+scalable: false
+
+labels:
+- frp
+- reverse-proxy
+- tunnel
+
+options:
+- version: '0.69'
+  tag: '0.69-0.3.0'
+  default: true
+
+endpoints:
+- name: control
+  ports:
+  - name: control
+    number: 7000
+    protocol: tcp
+- name: proxy
+  main: true
+  ports:
+  - name: proxy-http
+    number: 8080
+    protocol: http
+    main: true
+- name: dashboard
+  ports:
+  - name: dashboard
+    number: 7500
+    protocol: http
+    main: true
+
+tokens:
+- name: auth_token
+  generate:
+    regex: '[0-9a-z]{48}'
+- name: dashboard_user
+  value: admin
+- name: dashboard_password
+  generate:
+    regex: '[0-9a-z]{32}'
+
+helm:
+  name: wodby
+  source: oci://registry-1.docker.io/wodby/frps
+  chart: oci://registry-1.docker.io/wodby/frps
+  version: 0.1.0
+  values:
+  - name: auth.token
+    value: '{{auth_token}}'
+  - name: webServer.user
+    value: '{{dashboard_user}}'
+  - name: webServer.password
+    value: '{{dashboard_password}}'
+
+workloads:
+- name: main
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: '{{helm.release}}'
+  kind: deployment
+  primary: true
+  helm:
+    labels: podLabels
+    annotations: podAnnotations
+    volumes: extraVolumes
+  containers:
+  - name: frps
+    image: wodby/frp
+    helm:
+      resources: resources
+      env: envVars
+      mounts: extraVolumeMounts
