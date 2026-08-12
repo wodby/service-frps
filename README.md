@@ -23,7 +23,7 @@ configuration for FRP Server.
 | Versions | `0.69` by default |
 | Workloads | `main` (Deployment, primary) |
 | Containers | `frps` using `wodby/frp` |
-| Endpoints | `control`: TCP 7000; `proxy`: HTTP 8080 (main); `dashboard`: HTTP 7500 (main) |
+| Endpoints | `proxy`: control TCP 7000, proxy HTTP 8080 (main), and dashboard HTTP 7500 |
 | Service links | None |
 | Application build | Not buildable from application source |
 | Helm | chart `oci://registry-1.docker.io/wodby/frps`; version `0.1.0` |

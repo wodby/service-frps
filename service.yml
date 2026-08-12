@@ -15,24 +15,19 @@ options:
   default: true
 
 endpoints:
-- name: control
+- name: proxy
+  main: true
   ports:
   - name: control
     number: 7000
     protocol: tcp
-- name: proxy
-  main: true
-  ports:
   - name: proxy-http
     number: 8080
     protocol: http
     main: true
-- name: dashboard
-  ports:
   - name: dashboard
     number: 7500
     protocol: http
-    main: true
 
 tokens:
 - name: auth_token
