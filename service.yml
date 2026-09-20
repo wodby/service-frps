@@ -11,9 +11,8 @@ labels:
 
 options:
 - version: '0.69'
-  tag: '0.69-0.3.1'
+  tag: 0.69-r0
   default: true
-
 endpoints:
 - name: proxy
   main: true
@@ -49,7 +48,7 @@ helm:
   name: wodby
   source: oci://registry-1.docker.io/wodby/frps
   chart: oci://registry-1.docker.io/wodby/frps
-  version: 0.2.0
+  version: 0.2.1
   values:
   - name: auth.token
     value: '{{auth_token}}'
