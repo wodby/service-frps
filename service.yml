@@ -11,7 +11,7 @@ labels:
 
 options:
 - version: '0.69'
-  tag: 0.69-r0
+  tag: 0.69-r1
   default: true
 endpoints:
 - name: proxy
