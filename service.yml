@@ -71,6 +71,8 @@ workloads:
   containers:
   - name: frps
     image: wodby/frp
+    resources:
+      preset: nano
     helm:
       resources: resources
       env: envVars
