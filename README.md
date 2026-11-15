@@ -20,7 +20,7 @@ configuration for FRP Server.
 | --- | --- |
 | Service name | `frps` |
 | Type | Application service |
-| Versions | `0.69` by default |
+| Versions | `0.72` by default |
 | Workloads | `main` (Deployment, primary) |
 | Containers | `frps` using `wodby/frp` |
 | Endpoints | `proxy`: control TCP 7000, proxy HTTP 8080 (main), and dashboard HTTP 7500 |

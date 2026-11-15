@@ -10,8 +10,8 @@ labels:
 - tunnel
 
 options:
-- version: '0.69'
-  tag: 0.69-r1
+- version: '0.72'
+  tag: 0.72-r3
   default: true
 endpoints:
 - name: proxy
