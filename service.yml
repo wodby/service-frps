@@ -12,6 +12,7 @@ labels:
 options:
 - version: '0.72'
   tag: 0.72-r3
+  digest: sha256:0a4ccb59ec861c7a7435acb9928ed38c094b8d48e1711173b28a9d11509c5015
   default: true
 endpoints:
 - name: proxy
